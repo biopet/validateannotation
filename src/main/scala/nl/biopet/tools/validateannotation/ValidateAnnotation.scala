@@ -2,7 +2,7 @@ package nl.biopet.tools.validateannotation
 
 import java.io.File
 
-import nl.biopet.utils.ngs.FastaUtils
+import nl.biopet.utils.ngs.fasta
 import nl.biopet.utils.ngs.annotation.Feature
 import nl.biopet.utils.tool.ToolCommand
 import nl.biopet.tools.gtftorefflat.GtftoRefflat
@@ -17,7 +17,7 @@ object ValidateAnnotation extends ToolCommand {
 
     logger.info("Start")
 
-    val dict = FastaUtils.getCachedDict(cmdArgs.reference)
+    val dict = fasta.getCachedDict(cmdArgs.reference)
 
     try {
 
