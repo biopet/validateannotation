@@ -1,6 +1,6 @@
 # Manual
 
-ValidateAnnotation requires the refflatfile, a list of gtf files and a reference genome to check the annotation.
+ValidateAnnotation requires the refflatfile and a reference genome to check the annotation. A list of gtf files can be optionally used for checking as well.
 
 Example:
 
