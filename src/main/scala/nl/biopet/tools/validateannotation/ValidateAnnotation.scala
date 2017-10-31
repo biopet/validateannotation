@@ -9,7 +9,7 @@ import nl.biopet.tools.gtftorefflat.GtftoRefflat
 
 import scala.io.Source
 
-object ValidateAnnotation extends ToolCommand {
+object ValidateAnnotation extends ToolCommand[Args] {
   def main(args: Array[String]): Unit = {
     val parser = new ArgsParser(toolName)
     val cmdArgs =
