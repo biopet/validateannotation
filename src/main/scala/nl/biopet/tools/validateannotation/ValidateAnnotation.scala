@@ -21,11 +21,13 @@ object ValidateAnnotation extends ToolCommand[Args] {
 
     try {
 
-      val refflatLines = cmdArgs.refflatFile.map(Source.fromFile(_).getLines().toList.sorted)
+      val refflatLines =
+        cmdArgs.refflatFile.map(Source.fromFile(_).getLines().toList.sorted)
 
       for (line <- refflatLines.getOrElse(Nil)) {
         val contig = line.split("\t")(2)
-        require(dict.getSequence(contig) != null,
+        require(
+          dict.getSequence(contig) != null,
           s"Contig '$contig' found in refflat but not found on reference")
       }
 
@@ -34,11 +36,15 @@ object ValidateAnnotation extends ToolCommand[Args] {
           case Some(lines) =>
             val tempRefflat = File.createTempFile("temp.", ".refflat")
             tempRefflat.deleteOnExit()
-            GtftoRefflat.gtfToRefflat(file, tempRefflat, Some(cmdArgs.reference))
+            GtftoRefflat.gtfToRefflat(file,
+                                      tempRefflat,
+                                      Some(cmdArgs.reference))
 
-            val tempRefflatLines = Source.fromFile(tempRefflat).getLines().toList.sorted
+            val tempRefflatLines =
+              Source.fromFile(tempRefflat).getLines().toList.sorted
             for ((line1, line2) <- lines.zip(tempRefflatLines)) {
-              require(line1 == line2, "Refflat and gtf contain different information")
+              require(line1 == line2,
+                      "Refflat and gtf contain different information")
             }
           case _ =>
             Source
