@@ -67,4 +67,22 @@ object ValidateAnnotation extends ToolCommand[Args] {
 
     logger.info("Done")
   }
+
+  def descriptionText: String =
+    """
+      |Validate annotation validates whether the annotation file is correct given a set of GTF files.
+    """.stripMargin
+
+  def manualText: String =
+    """
+      |
+      |ValidateAnnotation requires the refflatfile and a
+      |reference genome to check the annotation. A list
+      |of gtf files can be optionally used for checking as well.
+    """.stripMargin
+
+  def exampleText: String =
+    s"""
+       |${example("-r", "refflatFile", "-g" , "gtfGile1", "-g","gtfFile2", "-g", "gtfFile3", "-R", "reference.fasta")}
+     """.stripMargin
 }
