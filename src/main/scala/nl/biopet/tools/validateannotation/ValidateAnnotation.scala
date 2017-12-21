@@ -93,29 +93,38 @@ object ValidateAnnotation extends ToolCommand[Args] {
   }
 
   def descriptionText: String =
-    """
-      |Validate annotation validates whether the annotation file is correct given a set of GTF files.
+    s"""
+      |${toolName}validates whether an annotation file is correct.
+      |It checks whether all the annotated contigs are present on the reference.
+      |It can check gtf or refflat files. It can also check both,
+      |in which case it will also check for dissimilarities between the refflat and
+      |GTF files.
     """.stripMargin
 
   def manualText: String =
-    """
+    s"""
       |
-      |ValidateAnnotation requires the refflatfile and a
-      |reference genome to check the annotation. A list
-      |of gtf files can be optionally used for checking as well.
+      |$toolName requires either a refflatfile or a GTF file.
+      |It also requires a reference genome to check the annotation.
+      |reference genome to check the annotation.
+      |
+      |The tool has a `--disableFail` flag which makes sure the tool returns
+      |exit code 0 when the tool has failed.
     """.stripMargin
 
   def exampleText: String =
     s"""
+       |$toolName can accept both a refflat File and a GTF file:
        |${example("-r",
                   "refflatFile",
                   "-g",
-                  "gtfGile1",
-                  "-g",
-                  "gtfFile2",
-                  "-g",
-                  "gtfFile3",
+                  "gtfFile1",
                   "-R",
                   "reference.fasta")}
+       |
+       |Running the validation on only one of them is also possible:
+       |
+       |${example("-r", "refflatFile", "-R", "reference.fasta")}
+       |
      """.stripMargin
 }

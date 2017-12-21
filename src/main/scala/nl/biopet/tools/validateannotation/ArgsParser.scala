@@ -31,7 +31,7 @@ class ArgsParser(toolCommand: ToolCommand[Args])
     (x, c) =>
       c.copy(refflatFile = Some(x))
   } text "Refflat file to check"
-  opt[File]('g', "gtfFile") unbounded () valueName "<file>" action { (x, c) =>
+  opt[File]('g', "gtfFile") valueName "<file>" action { (x, c) =>
     c.copy(gtfFiles = x :: c.gtfFiles)
   } text "Gtf files to check"
   opt[File]('R', "reference") required () maxOccurs 1 valueName "<file>" action {
