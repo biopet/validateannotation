@@ -36,6 +36,9 @@ object ValidateAnnotation extends ToolCommand[Args] {
   def main(args: Array[String]): Unit = {
     val cmdArgs = cmdArrayToArgs(args)
 
+    require(cmdArgs.refflatFile.nonEmpty || cmdArgs.gtfFiles.nonEmpty,
+            "The tool require at least 1 annotations file, (refflat or gtf)")
+
     logger.info("Start")
 
     val dict = fasta.getCachedDict(cmdArgs.reference)
