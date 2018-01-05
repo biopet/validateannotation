@@ -3,8 +3,8 @@ organizationName := "Sequencing Analysis Support Core - Leiden University Medica
 
 startYear := Some(2014)
 
-name := "ToolTemplate"
-biopetUrlName := "tool-template"
+name := "ValidateAnnotation"
+biopetUrlName := "validateannotation"
 
 biopetIsTool := true
 
