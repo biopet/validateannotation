@@ -50,9 +50,8 @@ object ValidateAnnotation extends ToolCommand[Args] {
 
       for (line <- refflatLines.getOrElse(Nil)) {
         val contig = line.split("\t")(2)
-        require(
-          dict.getSequence(contig) != null,
-          s"Contig '$contig' found in refflat but not found on reference")
+        require(dict.getSequence(contig) != null,
+                s"Contig '$contig' found in refflat but not found on reference")
       }
 
       cmdArgs.gtfFiles.distinct.foreach { file =>
